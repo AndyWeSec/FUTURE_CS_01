@@ -4,8 +4,6 @@ Repository for the Cyber Security Internship under the Fellowship Program at Fut
 
 
 # Vulnerability Assessment Report: demo.testfire.net
-<img width="1396" height="808" alt="Screenshot 1" src="https://github.com/user-attachments/assets/006baf26-fa13-4bb6-bc55-eb8018476679" />
-*Target application: `demo.testfire.net`, HCL's AltoroMutual demo banking site used to demonstrate web application vulnerability scanning.*
 
 **Target Domain:** http://testfire.net / https://testfire.net  
 **Date of Assessment:** August 27, 2026  
@@ -16,6 +14,8 @@ Repository for the Cyber Security Internship under the Fellowship Program at Fut
 
 ## 📋 Executive Summary
 A comprehensive security assessment of `demo.testfire.net` was conducted using automated and passive analysis techniques. The target site is highly vulnerable due to severe software obsolescence and critical input validation flaws. Immediate structural remediation is required to protect user financial data, fix identity management pathways, and secure the hosting environment.
+<img width="1396" height="808" alt="Screenshot 1" src="https://github.com/user-attachments/assets/006baf26-fa13-4bb6-bc55-eb8018476679" />
+*Target application: `demo.testfire.net`, HCL's AltoroMutual demo banking site used to demonstrate web application vulnerability scanning.*
 
 ---
 
