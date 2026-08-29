@@ -1,7 +1,10 @@
 # FUTURE_CS_01
 Repository for the Cyber Security Internship under the Fellowship Program at Future Interns (August 2026 – September 2026).
 
+
+
 # Vulnerability Assessment Report: demo.testfire.net
+<img width="1396" height="808" alt="Screenshot 1" src="https://github.com/user-attachments/assets/006baf26-fa13-4bb6-bc55-eb8018476679" />
 
 **Target Domain:** http://testfire.net / https://testfire.net  
 **Date of Assessment:** August 27, 2026  
@@ -16,12 +19,16 @@ A comprehensive security assessment of `demo.testfire.net` was conducted using a
 ---
 
 ## 🚨 Detailed Findings & Risk Breakdown
+<img width="1465" height="833" alt="Screenshot 4" src="https://github.com/user-attachments/assets/0cb49d6f-e10f-48a8-a0d7-d326dd366d88" />
+
 
 ### 1. SQL Injection (SQLi)
 * **What is the issue?** The web application fails to properly clean inputs typed by users into forms before sending them to the backend database.
 * **Why does it matter?** Attackers can input malicious database commands to trick the application. This allows them to bypass the login portal without a password, read secret customer records, steal financial data, or completely alter database content.
 * **Risk Level:** 🔴 **High**
 * **Remediation:** Implement **Parameterized Queries** (Prepared Statements) in the backend code. This treats all user inputs strictly as plain data rather than executable code.
+<img width="1446" height="829" alt="Screenshot 3" src="https://github.com/user-attachments/assets/fecb0b16-aa09-4f03-9443-dc08df554d77" />
+
 
 ### 2. Reflected Cross-Site Scripting (XSS)
 * **What is the issue?** The site accepts data from a web request and prints it directly back into the user's browser page without checking if it contains harmful code.
