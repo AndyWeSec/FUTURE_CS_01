@@ -52,6 +52,8 @@ A comprehensive security assessment of `demo.testfire.net` was conducted using a
 * **Remediation:** Configure the web application firewall or load balancer to strictly limit the maximum time allowed for clients to keep a connection open without sending data.
 
 ### 5. Outdated Backend Software Stack (Apache-Coyote/1.1)
+<img width="1459" height="831" alt="Screenshot 2026-08-29 at 18 58 22" src="https://github.com/user-attachments/assets/79a4f639-94f4-4cc6-9a1d-75c914d41631" />
+
 * **What is the issue?** The server identifies itself as running *Apache-Coyote/1.1*, a highly outdated application framework server element.
 * **Why does it matter?** This specific version leaks structural details about the server stack and contains multiple publicly documented bugs that attackers look for during the exploration phase.
 * **Risk Level:** 🟠 **Medium**
