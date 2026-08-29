@@ -5,6 +5,7 @@ Repository for the Cyber Security Internship under the Fellowship Program at Fut
 
 # Vulnerability Assessment Report: demo.testfire.net
 <img width="1396" height="808" alt="Screenshot 1" src="https://github.com/user-attachments/assets/006baf26-fa13-4bb6-bc55-eb8018476679" />
+*Target application: `demo.testfire.net`, HCL's AltoroMutual demo banking site used to demonstrate web application vulnerability scanning.*
 
 **Target Domain:** http://testfire.net / https://testfire.net  
 **Date of Assessment:** August 27, 2026  
@@ -20,6 +21,7 @@ A comprehensive security assessment of `demo.testfire.net` was conducted using a
 
 ## 🚨 Detailed Findings & Risk Breakdown
 <img width="1465" height="833" alt="Screenshot 4" src="https://github.com/user-attachments/assets/0cb49d6f-e10f-48a8-a0d7-d326dd366d88" />
+*OWASP ZAP's completed Automated Scan (Pen Test policy) against `demo.testfire.net`, showing 14 alert categories — including SQL Injection, Reflected XSS, and missing anti-CSRF tokens — the basis for the findings below.*
 
 
 ### 1. SQL Injection (SQLi)
@@ -28,6 +30,7 @@ A comprehensive security assessment of `demo.testfire.net` was conducted using a
 * **Risk Level:** 🔴 **High**
 * **Remediation:** Implement **Parameterized Queries** (Prepared Statements) in the backend code. This treats all user inputs strictly as plain data rather than executable code.
 <img width="1446" height="829" alt="Screenshot 3" src="https://github.com/user-attachments/assets/fecb0b16-aa09-4f03-9443-dc08df554d77" />
+*OWASP ZAP's Automated Scan actively probing `demo.testfire.net`'s login (`doLogin`) and feedback forms — the process that generated the SQL Injection, XSS, and CSRF findings above.*
 
 
 ### 2. Reflected Cross-Site Scripting (XSS)
@@ -57,6 +60,7 @@ A comprehensive security assessment of `demo.testfire.net` was conducted using a
 * **Risk Level:** 🟠 **Medium**
 * **Remediation:** Update the underlying server software to a supported, modern version. Configure the production server settings to hide application banners and software version information from public HTTP headers.
 <img width="1459" height="831" alt="Screenshot 2026-08-29 at 18 58 22" src="https://github.com/user-attachments/assets/79a4f639-94f4-4cc6-9a1d-75c914d41631" />
+*Nmap scan (`--unprivileged -sT -sV --script vuln`) confirming the outdated `Apache Tomcat/Coyote JSP engine 1.1` banner on port 80, and flagging multiple forms lacking anti-CSRF tokens (see Finding 7).*
 
 ### 6. Weak Cryptographic Configuration (1024-bit Diffie-Hellman Keys)
 * **What is the issue?** The server relies on a weak 1024-bit cryptographic key size for its encrypted channels.
