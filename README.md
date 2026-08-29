@@ -52,12 +52,11 @@ A comprehensive security assessment of `demo.testfire.net` was conducted using a
 * **Remediation:** Configure the web application firewall or load balancer to strictly limit the maximum time allowed for clients to keep a connection open without sending data.
 
 ### 5. Outdated Backend Software Stack (Apache-Coyote/1.1)
-<img width="1459" height="831" alt="Screenshot 2026-08-29 at 18 58 22" src="https://github.com/user-attachments/assets/79a4f639-94f4-4cc6-9a1d-75c914d41631" />
-
 * **What is the issue?** The server identifies itself as running *Apache-Coyote/1.1*, a highly outdated application framework server element.
 * **Why does it matter?** This specific version leaks structural details about the server stack and contains multiple publicly documented bugs that attackers look for during the exploration phase.
 * **Risk Level:** 🟠 **Medium**
 * **Remediation:** Update the underlying server software to a supported, modern version. Configure the production server settings to hide application banners and software version information from public HTTP headers.
+<img width="1459" height="831" alt="Screenshot 2026-08-29 at 18 58 22" src="https://github.com/user-attachments/assets/79a4f639-94f4-4cc6-9a1d-75c914d41631" />
 
 ### 6. Weak Cryptographic Configuration (1024-bit Diffie-Hellman Keys)
 * **What is the issue?** The server relies on a weak 1024-bit cryptographic key size for its encrypted channels.
