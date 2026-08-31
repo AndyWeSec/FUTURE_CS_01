@@ -121,6 +121,7 @@ An email purporting to be from an internal "IT Service Desk" was submitted for a
 * **Risk Level:** 🔴 **High**
 * **Remediation:** Configure email security gateways to flag or block domains using homoglyph/character-substitution patterns targeting trusted brand names. Train staff to inspect the actual sender address, not just the display name.
   <img width="1334" height="359" alt="Screenshot 2026-08-31 at 10 09 16" src="https://github.com/user-attachments/assets/a1d611a6-9c22-40b0-ba0f-a27f8897ac7c" />
+ *MXToolbox Header Analyzer output confirming the true sender address (`security-update@micros0ft-support.com`) behind the "IT Service Desk" display name — note the zero substituted for the letter "o".*
 
 
 ### 2. Insecure URL Protocol
@@ -135,7 +136,7 @@ An email purporting to be from an internal "IT Service Desk" was submitted for a
 * **Risk Level:** 🔴 **High**
 * **Remediation:** Block the domain at the DNS/firewall level, submit it to threat intelligence feeds (e.g. Google Safe Browsing, PhishTank) if not already flagged, and ensure endpoint protection is active organization-wide.
 <img width="1162" height="756" alt="Screenshot 2026-08-31 at 10 18 20" src="https://github.com/user-attachments/assets/4d9ebe68-c890-4524-a959-6bfce3d68874" />
-
+*Google Chrome's built-in Safe Browsing protection flagging `login-microsoft-secure-portal.com` as a dangerous site, independently corroborating the phishing link's malicious destination.*
 
 
 ### 4. Generic Greeting
