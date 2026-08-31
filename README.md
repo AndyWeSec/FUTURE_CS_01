@@ -1,6 +1,13 @@
 # FUTURE_CS_01
 Repository for the Cyber Security Internship under the Fellowship Program at Future Interns (August 2026 – September 2026).
 
+# Future Interns Cyber Security Internship Portfolio
+August 2026 – September 2026
+
+## 📌 Project Tasks
+* [Task 1: Vulnerability Assessment Report (demo.testfire.net)](./Task_01_Vulnerability_Assessment/)
+* [Task 2: Phishing Email Analysis](./Task_02_Phishing_Analysis/)
+
 
 
 # Vulnerability Assessment Report: demo.testfire.net
@@ -90,3 +97,80 @@ A comprehensive security assessment of `demo.testfire.net` was conducted using a
 1. **Immediate (24–48 Hours):** Replace the expired SSL certificate on Port 443, fix the site mapping to force safe redirection from plain HTTP to HTTPS, and update the server configuration to block outdated 1024-bit encryption.
 2. **Short Term (1–2 Weeks):** Patch the underlying application code to implement prepared statements for SQL queries and secure output encoding to eliminate SQL Injection and XSS entry points.
 3. **Medium Term (Monthly Maintenance):** Schedule a maintenance window to upgrade the outdated Apache-Coyote/1.1 backend and configure standard web security headers to complete the defense-in-depth posture.
+
+
+# Vulnerability Assessment Report: Phishing Email Analysis
+
+**Assessment Type:** Email Security / Social Engineering Analysis   
+**Tools Used:** MXToolbox Header Analyzer 
+<img width="1334" height="569" alt="Screenshot 2026-08-31 at 10 09 23" src="https://github.com/user-attachments/assets/1b5b28c9-5133-4733-b225-4006722defc5" />
+
+
+**Classification:** 🔴 **Phishing — High Risk**
+
+---
+
+## 📋 Executive Summary
+An email purporting to be from an internal "IT Service Desk" was submitted for analysis and confirmed to be a phishing attempt. The message combines technical spoofing techniques — including a typosquatted sender domain and an insecure malicious link — with classic social engineering tactics such as urgency and impersonation. The email should be treated as malicious, reported, and blocked at the mail gateway level.
+
+---
+
+## 🚨 Detailed Findings & Risk Breakdown
+
+### 1. Spoofed Sender Address
+* **What is the issue?** The display name claims to be the official "IT Service Desk," but header analysis (via MXToolbox Header Analyzer) reveals the true sender address as `security-update@micros0ft-support.com` — with the letter "o" replaced by the number "0".
+* **Why does it matter?** This is a deliberate typosquatting technique designed to visually resemble a legitimate Microsoft domain, exploiting the tendency of users to trust a familiar display name without checking the underlying address. It is specifically engineered to bypass casual visual inspection.
+* **Risk Level:** 🔴 **High**
+* **Remediation:** Configure email security gateways to flag or block domains using homoglyph/character-substitution patterns targeting trusted brand names. Train staff to inspect the actual sender address, not just the display name.
+  <img width="1334" height="359" alt="Screenshot 2026-08-31 at 10 09 16" src="https://github.com/user-attachments/assets/a1d611a6-9c22-40b0-ba0f-a27f8897ac7c" />
+
+
+### 2. Insecure URL Protocol
+* **What is the issue?** The embedded hyperlink uses unencrypted `http://` (`http://login-microsoft-secure-portal.com`) rather than secure `https://`.
+* **Why does it matter?** Legitimate corporate login portals — especially those belonging to major providers like Microsoft — universally use HTTPS. The use of plain HTTP is a strong technical red flag and indicates the link was not built through legitimate infrastructure.
+* **Risk Level:** 🔴 **High**
+* **Remediation:** Implement email filtering rules that flag outbound links using insecure protocols, and reinforce user training on checking for HTTPS before submitting any credentials.
+
+### 3. Malicious Destination Site
+* **What is the issue?** The link redirects to a page designed to harvest sensitive information — including passwords, phone numbers, and credit card details — or to trick visitors into installing malicious software.
+* **Why does it matter?** Modern browsers (e.g. Google Chrome) already flag this specific domain as unsafe and display a warning page, independently corroborating that the destination is a known malicious site rather than a false positive.
+* **Risk Level:** 🔴 **High**
+* **Remediation:** Block the domain at the DNS/firewall level, submit it to threat intelligence feeds (e.g. Google Safe Browsing, PhishTank) if not already flagged, and ensure endpoint protection is active organization-wide.
+<img width="1162" height="756" alt="Screenshot 2026-08-31 at 10 18 20" src="https://github.com/user-attachments/assets/4d9ebe68-c890-4524-a959-6bfce3d68874" />
+
+
+
+### 4. Generic Greeting
+* **What is the issue?** The email opens with "Dear Customer" rather than addressing the recipient by name.
+* **Why does it matter?** Legitimate internal IT communications typically reference the employee by name or account-specific details. A generic greeting suggests a mass-distributed phishing campaign rather than a targeted, authentic internal message.
+* **Risk Level:** 🟠 **Medium**
+* **Remediation:** Encourage staff to treat generically-addressed "urgent" emails from internal departments with suspicion, and verify through a separate communication channel (e.g. phone, Slack) before acting.
+
+### 5. Artificial Urgency
+* **What is the issue?** The email threatens permanent account suspension within a strict 2-hour window.
+* **Why does it matter?** This is a classic psychological pressure tactic used to provoke hasty action and bypass rational scrutiny, a hallmark of social engineering attacks designed to short-circuit normal verification habits.
+* **Risk Level:** 🟠 **Medium**
+* **Remediation:** Train staff to recognize artificial time-pressure tactics as a phishing indicator, and establish a "cool-down" policy — any account-security email demanding immediate action should be independently verified before compliance.
+
+### 6. Spelling and Grammar Errors
+* **What is the issue?** The email body contains grammatical errors, including a misspelling of the word "corporate."
+* **Why does it matter?** Poor spelling and grammar remain a common — if increasingly inconsistent — indicator of phishing, often resulting from mass-produced templates, translation artifacts, or non-native authorship by threat actors.
+* **Risk Level:** 🟡 **Low**
+* **Remediation:** Include spelling/grammar inconsistencies as one signal (not a sole determinant) in phishing-awareness training, alongside the stronger technical indicators above.
+
+---
+
+## 🛡️ Recommended Mitigation & Action Steps
+
+1. **Verify Senders:** Never rely on display names alone — inspect the exact domain string for deceptive character substitutions (e.g. `0` for `o`).
+2. **Inspect Before Interacting:** Always hover over hyperlinks to check the destination domain and confirm the protocol is `https://` before clicking.
+3. **Report Suspicious Activity:** Do not reply to the sender or enter any credentials. Forward flagged messages directly to the internal IT security mailbox for isolation and analysis.
+4. **Block at Source:** Add the sender domain and malicious link to the organization's email/DNS blocklists to prevent further delivery.
+
+---
+
+## 🛠️ Summary Action Roadmap
+
+1. **Immediate:** Block the sender domain (`micros0ft-support.com`) and malicious link domain at the email gateway and DNS level; report the sample to internal security and external threat intelligence feeds.
+2. **Short Term:** Notify any recipients who may have received the email and confirm none have submitted credentials to the phishing site.
+3. **Ongoing:** Reinforce phishing-awareness training focused on sender-domain inspection, HTTPS verification, and recognizing urgency-based social engineering tactics.
