@@ -5,8 +5,8 @@ Repository for the Cyber Security Internship under the Fellowship Program at Fut
 August 2026 – September 2026
 
 ## 📌 Project Tasks
-* [Task 1: Vulnerability Assessment Report (demo.testfire.net)](./Task_01_Vulnerability_Assessment/)
-* [Task 2: Phishing Email Analysis](./Task_02_Phishing_Analysis/)
+* [Task 1: Vulnerability Assessment Report (demo.testfire.net)](#vulnerability-assessment-report-demotestfirenet)
+* [Task 2: Phishing Email Analysis](#vulnerability-assessment-report-phishing-email-analysis)
 
 
 
