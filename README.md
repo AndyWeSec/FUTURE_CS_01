@@ -103,8 +103,6 @@ A comprehensive security assessment of `demo.testfire.net` was conducted using a
 
 **Assessment Type:** Email Security / Social Engineering Analysis   
 **Tools Used:** MXToolbox Header Analyzer 
-<img width="1334" height="569" alt="Screenshot 2026-08-31 at 10 09 23" src="https://github.com/user-attachments/assets/1b5b28c9-5133-4733-b225-4006722defc5" />
-
 
 **Classification:** 🔴 **Phishing — High Risk**
 
