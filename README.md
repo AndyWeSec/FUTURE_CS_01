@@ -114,7 +114,12 @@ An email purporting to be from an internal "IT Service Desk" was submitted for a
 
 ---
 
+# API Security Risk Analysis 
+
 ## 🚨 Detailed Findings & Risk Breakdown
+
+<img width="1470" height="739" alt="Screenshot 2026-09-07 at 12 26 16" src="https://github.com/user-attachments/assets/c0d9577c-b38d-43cc-b9a2-a236dd623f03" />
+Figure 1.1: Automated HTTP GET request evaluation targeting the postman-echo.com server. The inspection reveals a successful 200 OK transmission returning raw JSON payload parameters, while highlighting architectural anomalies including public unauthenticated data routing and client software framework exposure
 
 ### 1. Spoofed Sender Address
 * **What is the issue?** The display name claims to be the official "IT Service Desk," but header analysis (via MXToolbox Header Analyzer) reveals the true sender address as `security-update@micros0ft-support.com` — with the letter "o" replaced by the number "0".
@@ -174,3 +179,9 @@ An email purporting to be from an internal "IT Service Desk" was submitted for a
 1. **Immediate:** Block the sender domain (`micros0ft-support.com`) and malicious link domain at the email gateway and DNS level; report the sample to internal security and external threat intelligence feeds.
 2. **Short Term:** Notify any recipients who may have received the email and confirm none have submitted credentials to the phishing site.
 3. **Ongoing:** Reinforce phishing-awareness training focused on sender-domain inspection, HTTPS verification, and recognizing urgency-based social engineering tactics.
+
+
+├── README.md               <-- This documentation file
+└── screenshots/
+    └── get_request.png     <-- Screenshot of your Postman workspace showing the JSON response
+
