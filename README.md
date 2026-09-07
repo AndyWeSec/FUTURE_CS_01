@@ -7,7 +7,7 @@ August 2026 – September 2026
 ## 📌 Project Tasks
 * [Task 1: Vulnerability Assessment Report (demo.testfire.net)](#vulnerability-assessment-report-demotestfirenet)
 * [Task 2: Phishing Email Analysis](#vulnerability-assessment-report-phishing-email-analysis)
-
+* [Task 3: API Security Risk Analysis (postman-echo.com)](#api-security-risk-analysis-postman-echocom)
 
 
 # Vulnerability Assessment Report: demo.testfire.net
