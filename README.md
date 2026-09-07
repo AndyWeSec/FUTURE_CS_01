@@ -9,6 +9,7 @@ August 2026 – September 2026
 * [Task 2: Phishing Email Analysis](#vulnerability-assessment-report-phishing-email-analysis)
 * [Task 3: API Security Risk Analysis (postman-echo.com)](#api-security-risk-analysis-postman-echocom)
 
+---
 
 # Vulnerability Assessment Report: demo.testfire.net
 
@@ -30,7 +31,6 @@ A comprehensive security assessment of `demo.testfire.net` was conducted using a
 <img width="1465" height="833" alt="Screenshot 4" src="https://github.com/user-attachments/assets/0cb49d6f-e10f-48a8-a0d7-d326dd366d88" />
 *OWASP ZAP's completed Automated Scan (Pen Test policy) against `demo.testfire.net`, showing 14 alert categories — including SQL Injection, Reflected XSS, and missing anti-CSRF tokens — the basis for the findings below.*
 
-
 ### 1. SQL Injection (SQLi)
 * **What is the issue?** The web application fails to properly clean inputs typed by users into forms before sending them to the backend database.
 * **Why does it matter?** Attackers can input malicious database commands to trick the application. This allows them to bypass the login portal without a password, read secret customer records, steal financial data, or completely alter database content.
@@ -38,7 +38,6 @@ A comprehensive security assessment of `demo.testfire.net` was conducted using a
 * **Remediation:** Implement **Parameterized Queries** (Prepared Statements) in the backend code. This treats all user inputs strictly as plain data rather than executable code.
 <img width="1446" height="829" alt="Screenshot 3" src="https://github.com/user-attachments/assets/fecb0b16-aa09-4f03-9443-dc08df554d77" />
 *OWASP ZAP's Automated Scan actively probing `demo.testfire.net`'s login (`doLogin`) and feedback forms — the process that generated the SQL Injection, XSS, and CSRF findings above.*
-
 
 ### 2. Reflected Cross-Site Scripting (XSS)
 * **What is the issue?** The site accepts data from a web request and prints it directly back into the user's browser page without checking if it contains harmful code.
@@ -98,14 +97,13 @@ A comprehensive security assessment of `demo.testfire.net` was conducted using a
 2. **Short Term (1–2 Weeks):** Patch the underlying application code to implement prepared statements for SQL queries and secure output encoding to eliminate SQL Injection and XSS entry points.
 3. **Medium Term (Monthly Maintenance):** Schedule a maintenance window to upgrade the outdated Apache-Coyote/1.1 backend and configure standard web security headers to complete the defense-in-depth posture.
 
+---
 
 # Vulnerability Assessment Report: Phishing Email Analysis
- 
-**Assessment Type:** Email Security / Social Engineering Analysis
-**Date of Assessment:** *August 31, 2026* 
+
+**Date of Assessment:** *August 31, 2026*  
 **Tools Used:** MXToolbox Header Analyzer  
 **Classification:** 🔴 **Phishing — High Risk**
-
 
 ---
 
@@ -114,14 +112,15 @@ An email purporting to be from an internal "IT Service Desk" was submitted for a
 
 ---
 
+## 🚨 Detailed Findings & Risk Breakdown
+
 ### 1. Spoofed Sender Address
 * **What is the issue?** The display name claims to be the official "IT Service Desk," but header analysis (via MXToolbox Header Analyzer) reveals the true sender address as `security-update@micros0ft-support.com` — with the letter "o" replaced by the number "0".
 * **Why does it matter?** This is a deliberate typosquatting technique designed to visually resemble a legitimate Microsoft domain, exploiting the tendency of users to trust a familiar display name without checking the underlying address. It is specifically engineered to bypass casual visual inspection.
 * **Risk Level:** 🔴 **High**
 * **Remediation:** Configure email security gateways to flag or block domains using homoglyph/character-substitution patterns targeting trusted brand names. Train staff to inspect the actual sender address, not just the display name.
   <img width="1334" height="359" alt="Screenshot 2026-08-31 at 10 09 16" src="https://github.com/user-attachments/assets/a1d611a6-9c22-40b0-ba0f-a27f8897ac7c" />
- *MXToolbox Header Analyzer output confirming the true sender address (`security-update@micros0ft-support.com`) behind the "IT Service Desk" display name — note the zero substituted for the letter "o".*
-
+  *MXToolbox Header Analyzer output confirming the true sender address (`security-update@micros0ft-support.com`) behind the "IT Service Desk" display name — note the zero substituted for the letter "o".*
 
 ### 2. Insecure URL Protocol
 * **What is the issue?** The embedded hyperlink uses unencrypted `http://` (`http://login-microsoft-secure-portal.com`) rather than secure `https://`.
@@ -136,7 +135,6 @@ An email purporting to be from an internal "IT Service Desk" was submitted for a
 * **Remediation:** Block the domain at the DNS/firewall level, submit it to threat intelligence feeds (e.g. Google Safe Browsing, PhishTank) if not already flagged, and ensure endpoint protection is active organization-wide.
 <img width="1162" height="756" alt="Screenshot 2026-08-31 at 10 18 20" src="https://github.com/user-attachments/assets/4d9ebe68-c890-4524-a959-6bfce3d68874" />
 *Google Chrome's built-in Safe Browsing protection flagging `login-microsoft-secure-portal.com` as a dangerous site, independently corroborating the phishing link's malicious destination.*
-
 
 ### 4. Generic Greeting
 * **What is the issue?** The email opens with "Dear Customer" rather than addressing the recipient by name.
@@ -173,9 +171,11 @@ An email purporting to be from an internal "IT Service Desk" was submitted for a
 2. **Short Term:** Notify any recipients who may have received the email and confirm none have submitted credentials to the phishing site.
 3. **Ongoing:** Reinforce phishing-awareness training focused on sender-domain inspection, HTTPS verification, and recognizing urgency-based social engineering tactics.
 
+---
+
 # API Security Risk Analysis: postman-echo.com
 
-**Date of Assessment:** *September 2026*  
+**Date of Assessment:** *[insert date]*  
 **Tools Used:** Postman  
 **Classification:** 🟡 **Low–Medium Risk**
 
